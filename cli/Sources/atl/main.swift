@@ -3,7 +3,7 @@ import ArgumentParser
 struct Main: ParsableCommand {
 	static let configuration = CommandConfiguration(
 		commandName: "atl",
-		abstract: "nc is a tool to automate the commits and set the proper format base on atlabs definition",
+		abstract: "atl is a set of tools to automate the work and make the job more easy 😃!",
 		subcommands: [NC.self]
 	)
 }
