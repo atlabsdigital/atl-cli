@@ -28,7 +28,7 @@ internal struct DefaultBranchValidator: BranchValidator {
 	}
 
 	func extractTicketId(_ name: String) throws -> String {
-		if ["master", "develop"].contains(name) { return "" }
+		if ["master", "develop"].contains(name) { return name }
 		try isValidBranch(name)
 		let splitted = name.split(separator: "/")
 		return String(splitted[1])
