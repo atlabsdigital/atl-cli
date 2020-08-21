@@ -10,5 +10,14 @@ internal struct Utils {
 					in: .whitespacesAndNewlines
 			)
 		}
+
+		static func add() -> String{
+			return launch(command: "git", arguments: "add", ".")
+
+		}
+
+		static func commit(branch: String = Git.currentBranch, message: String) -> String {
+			return launch(command: "git", arguments: "commit", "-m", message)
+		}
 	}
 }

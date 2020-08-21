@@ -1,14 +1,36 @@
+import Foundation
+
 internal struct DefaultBranchValidator: BranchValidator {
 
-	public enum BranchError: Error {
+	public enum BranchError: LocalizedError {
 		case wrongFormat
+
+		var errorDescription: String? {
+			switch self {
+			case .wrongFormat:
+				return "The branch name does not has the standard convention"
+			}
+		}
+
+		 var recoverySuggestion: String? {
+			switch self {
+			case .wrongFormat:
+				return "Use the standard convention"
+			}
+		}
+
 	}
 
-	func isValidBranch(_ name: String) throws -> Bool {
-		if ["master", "develop"].contains(name) { return true }
+	func isValidBranch(_ name: String) throws {
+		if ["master", "develop"].contains(name) { return }
 		let splitted = name.split(separator: "-")
 		guard splitted.count == 2 else { throw BranchError.wrongFormat }
-		return true
+	}
 
+	func extractTicketId(_ name: String) throws -> String {
+		if ["master", "develop"].contains(name) { return "" }
+		try isValidBranch(name)
+		let splitted = name.split(separator: "/")
+		return String(splitted[1])
 	}
 }

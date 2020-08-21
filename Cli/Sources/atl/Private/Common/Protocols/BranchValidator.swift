@@ -1,3 +1,4 @@
 internal protocol BranchValidator {
-	func isValidBranch(_ name: String) throws -> Bool
+	func isValidBranch(_ name: String) throws
+	func extractTicketId(_ name: String) throws -> String
 }
