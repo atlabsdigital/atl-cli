@@ -37,8 +37,9 @@ public struct NC: ParsableCommand {
 		if verbose { }
 		let branch = Utils.Git.currentBranch
 		try NC.branchValidator.isValidBranch(branch)
-		print(Utils.Git.add())
 		let ticketId = try NC.branchValidator.extractTicketId(branch)
-		print(Utils.Git.commit(message: "\"\(type.rawValue): \(ticketId) - \(message)\""))
+		Utils.Git.add()
+		Utils.Git.commit(branch: branch, message: "\"\(type.rawValue): \(ticketId) - \(message)\"")
+		Utils.Git.push(branch: branch)
 	}
 }
