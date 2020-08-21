@@ -1,7 +1,6 @@
 import Foundation
 
-internal struct DefaultBranchValidator: BranchValidator {
-
+internal struct BranchValidator {
 	public enum BranchError: LocalizedError {
 		case wrongFormat
 
@@ -18,7 +17,6 @@ internal struct DefaultBranchValidator: BranchValidator {
 				return "Use the standard convention"
 			}
 		}
-
 	}
 
 	func isValidBranch(_ name: String) throws {

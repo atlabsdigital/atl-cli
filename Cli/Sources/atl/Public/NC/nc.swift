@@ -26,7 +26,8 @@ public struct NC: ParsableCommand {
 	private var verbose: Bool
 
 	// MARK: - Properties
-	private static var branchValidator = DefaultBranchValidator()
+	private static var branchValidator = BranchValidator()
+	private static var gitActions: GitActions = Utils.Git()
 
 	// MARK: - Init
 	public init() { }
@@ -35,11 +36,11 @@ public struct NC: ParsableCommand {
 	public func run() throws {
 		// TODO: Add verbose options
 		if verbose { }
-		let branch = Utils.Git.currentBranch
+		let branch = NC.gitActions.currentBranch
 		try NC.branchValidator.isValidBranch(branch)
 		let ticketId = try NC.branchValidator.extractTicketId(branch)
-		Utils.Git.add()
-		Utils.Git.commit(branch: branch, message: "\"\(type.rawValue): \(ticketId) - \(message)\"")
-		Utils.Git.push(branch: branch)
+		NC.gitActions.add()
+		NC.gitActions.commit(branch: branch, message: "\"\(type.rawValue): \(ticketId) - \(message)\"")
+		NC.gitActions.push(branch: branch)
 	}
 }

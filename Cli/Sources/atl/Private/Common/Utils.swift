@@ -1,8 +1,8 @@
 import Foundation
 
 internal struct Utils {
-	struct Git {
-		static var currentBranch: String {
+	struct Git: GitActions {
+		var currentBranch: String {
 			return launch(
 				command: "git",
 				arguments: "describe", "--contains", "--all", "HEAD")
@@ -12,18 +12,17 @@ internal struct Utils {
 		}
 
 		@discardableResult
-		static func add() -> String{
+		func add() -> String{
 			return launch(command: "git", arguments: "add", ".")
-
 		}
 
 		@discardableResult
-		static func commit(branch: String = Git.currentBranch, message: String) -> String {
+		func commit(branch: String, message: String) -> String {
 			return launch(command: "git", arguments: "commit", "-m", message)
 		}
 
 		@discardableResult
-		static func push(branch: String = Git.currentBranch) -> String {
+		func push(branch: String) -> String {
 			return launch(command: "git", arguments: "push", "origin", branch)
 		}
 	}
