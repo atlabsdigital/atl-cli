@@ -5,7 +5,7 @@ internal struct Utils {
 		var currentBranch: String {
 			return launch(
 				command: "git",
-				arguments: "describe", "--contains", "--all", "HEAD")
+				arguments: "rev-parse", "--abbrev-ref", "HEAD")
 				.trimmingCharacters(
 					in: .whitespacesAndNewlines
 			)
