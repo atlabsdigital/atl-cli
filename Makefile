@@ -3,7 +3,7 @@ SHELL = /bin/bash
 prefix ?= /usr/local
 bindir ?= $(prefix)/bin
 libdir ?= $(prefix)/lib
-srcdir = Sources
+srcdir = cli/Sources
 
 REPODIR = $(shell pwd)
 BUILDDIR = $(REPODIR)/.build
@@ -16,12 +16,12 @@ all: atl
 
 atl: $(SOURCES)
 		@swift build \
-			-c release
+			-c release \
 			--disable-sandbox \
 			--build-path "$(BUILDDIR)"
 
 .PHONY: install
-install atl
+install: atl
 		@install -d "$(bindir)"
 		@install "$(BUILDDIR)/release/atl"	"$(bindir)"		
 
@@ -37,6 +37,3 @@ distclean:
 clean: distclean
 		@rm -f $(BUILDDIR)
 
-
-
-install: build
