@@ -1,29 +1,58 @@
-# README #
+# 🧬 atl
 
-This README would normally document whatever steps are necessary to get your application up and running.
+atl is a set of tools to automate the work and make the job more easy 😃
 
-### What is this repository for? ###
+**Where does atl come from?** *$ atl* borns from the necessity to unify the git commit messages across all the project we are running on the company. 
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Tools 🧰
 
-### How do I get set up? ###
+atl contains the following set of tools:
+### nc
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+nc provides from **n**ew **c**ommit and it needs to be used to create a new commit in the project. 
 
-### Contribution guidelines ###
+nc will automatically get the branch name and add it to the commit. This branch name should follow the following convention:
 
-* Writing tests
-* Code review
-* Other guidelines
+- master or develop
+- jira ticket (f.e. feature/WAP-001) => It will get the WAP-001.
 
-### Who do I talk to? ###
+If the convention is not followed, it will show an error in the terminal screen.
 
-* Repo owner or admin
-* Other community or team contact
+``` bash
+# available option for type
+# case build, chore, ci, docs, feat, fix, improvement, perf, refactor, revert, test
+$ atl nc <type> <message>
+
+# Example
+$ atl nc chore "my commit message" 
+```
+Result: 
+```text
+chore: develop - my commit message
+```
+
+
+#### Limitations
+ - Doesn't allow to add some files. Instead, it add all the files to commit.
+
+
+
+## Install 🛠
+
+### Source code
+Install the atl tool from the source code
+
+```bash
+$ git clone https://bitbucket.org/atlabstech/git-cli.git
+
+$ cd git-cli/Cli
+
+$ swift build --configuration release
+
+$ cp -f .build/release/atl /usr/local/bin/atl
+```
+
+
+### Homebre
+Coming soon
+
