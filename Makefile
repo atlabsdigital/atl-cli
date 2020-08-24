@@ -3,7 +3,7 @@ SHELL = /bin/bash
 prefix ?= /usr/local
 bindir ?= $(prefix)/bin
 libdir ?= $(prefix)/lib
-srcdir = cli/Sources
+srcdir = Sources
 
 REPODIR = $(shell pwd)
 BUILDDIR = $(REPODIR)/.build
@@ -31,9 +31,9 @@ uninstall:
 
 .PHONY: clean
 distclean:
-		@rm -f $(BUILDDIR)/release
+		@rm -rf $(BUILDDIR)/release
 
 .PHONY: clean
 clean: distclean
-		@rm -f $(BUILDDIR)
+		@rm -rf $(BUILDDIR)
 

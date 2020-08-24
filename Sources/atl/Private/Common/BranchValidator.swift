@@ -20,6 +20,8 @@ internal struct BranchValidator {
 	}
 
 	func isValidBranch(_ name: String) throws {
+		print(name)
+		
 		if ["master", "develop"].contains(name) { return }
 		let splitted = name.split(separator: "-")
 		guard splitted.count == 2 else { throw BranchError.wrongFormat }

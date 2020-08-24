@@ -51,6 +51,8 @@ $ cp -f .build/release/atl /usr/local/bin/atl
 ```
 
 
-### Homebre
-Coming soon
+### Homebrew
+```bash
+$ brew install atl
+```
 
