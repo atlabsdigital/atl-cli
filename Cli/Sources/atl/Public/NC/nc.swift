@@ -36,18 +36,11 @@ public struct NC: ParsableCommand {
 	public func run() throws {
 		// TODO: Add verbose options
 		if verbose { }
-		print("a")
 		let branch = NC.gitActions.currentBranch
-		print("b")
 		try NC.branchValidator.isValidBranch(branch)
-		print("c")
 		let ticketId = try NC.branchValidator.extractTicketId(branch)
-		print("d")
 		NC.gitActions.add()
-		print("e")
 		NC.gitActions.commit(branch: branch, message: "\"\(type.rawValue): \(ticketId) - \(message)\"")
-		print("f")
 		NC.gitActions.push(branch: branch)
-		print("g")
 	}
 }

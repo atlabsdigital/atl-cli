@@ -35,8 +35,6 @@ chore: develop - my commit message
 #### Limitations
  - Doesn't allow to add some files. Instead, it add all the files to commit.
 
-
-
 ## Install 🛠
 
 ### Source code
